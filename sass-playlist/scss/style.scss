@@ -1,0 +1,87 @@
+@import "reset";
+@import "mixins";
+@import "Variables";
+
+#main-nav {
+  background: $deepBlue;
+  ul {
+    width: 100%;
+    //引用mixin
+    @include clearFix;
+  }
+  li {
+    float: left;
+    width: (100% / 6);
+    //引用mq mixin，自定义content
+    @include mq(600px) {
+      width: 100%;
+    }
+  }
+  a {
+    color: $offWhite;
+    text-decoration: none;
+    padding: 16px;
+    display: block;
+    text-align: center;
+    &:hover {
+      //高亮显示当前颜色，程度取决于第二个参数
+      background: lighten($deepBlue, 5);
+    }
+
+  }
+}//end main-nav
+
+section h1{
+  font-size: $sectionHeading;
+  color: $deepBlue;
+}
+
+.lead-banner {
+  @include banner;
+  text-align: right;
+}
+.lessons-banner {
+  @include banner;
+  li {
+    text-transform: uppercase;
+    font-size: 20px;
+    max-width: 500px;
+    margin: 30px 0;
+  }
+}
+
+#services {
+  margin-bottom: 60px;
+  li {
+    float:left;
+    box-sizing: border-box;
+    text-align: center;
+    //分配宽度
+    width:(100% / 3);
+  }
+  img {
+    width: 60%;
+    margin: 20px 20%;
+  }
+  a {
+    text-decoration: none;
+    color:$deepBlue;
+    font-weight: bold;
+    &:hover {
+      //寻找和参数颜色相搭配的颜色
+      color: complement($deepBlue);
+    }
+  }
+  ul {
+    @include clearFix;
+  }
+}
+
+#projects li {
+  //第二个参数为百分数，因为grid mixin使用百分数计算宽度的
+  @include grid(4, 2%)
+  img {
+    width: 100%;
+  }
+  @include clearFix;
+}
