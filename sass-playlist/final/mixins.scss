@@ -46,7 +46,7 @@
     margin-right: 0;
   }
 }
-
+// feature 1 update
 @mixin mQ($args...){
   @if length($args) == 1{
     @media screen and (max-width: nth($args, 1)){
